@@ -21,6 +21,7 @@ This package provides an additional option for the NodeType configuration to aut
 | replication.structure                   | Automatically create and remove the node in other dimensions                    |
 | replication.content                     | Automatically update the content of the corresponding nodes in other dimensions |
 | replication.updateEmptyPropertiesOnly   | When updating content, only update empty properties                             |
+| replication.excludeProperties           | Exclude properties from replication                                             |
 
 **Example Configuration:**
 
@@ -55,4 +56,16 @@ This package provides an additional option for the NodeType configuration to aut
       content: true
       updateEmptyPropertiesOnly: true
     
+'Vendor.Package:YetAnotherAddressCategory':
+  superTypes:
+    'Neos.Neos:Content': true
+  ...
+  
+  options:  
+    replication:
+      structure: true
+      content: true
+      excludeProperties:
+        - metaDescription
+        - metaKeywords
 ```
